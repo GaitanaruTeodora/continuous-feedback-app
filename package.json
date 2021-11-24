@@ -1,7 +1,6 @@
 {
-  "name": "continous-feedback-app",
+  "name": "continuous-feedback-app",
   "version": "1.0.0",
-  "description": "",
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,16 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GaitanaruTeodora/countinous-feedback-app.git"
+    "url": "git+https://github.com/GaitanaruTeodora/continous-feedback-app.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/GaitanaruTeodora/countinous-feedback-app/issues"
+    "url": "https://github.com/GaitanaruTeodora/continous-feedback-app/issues"
   },
-  "homepage": "https://github.com/GaitanaruTeodora/countinous-feedback-app#readme",
+  "homepage": "https://github.com/GaitanaruTeodora/continous-feedback-app#readme",
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.15"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
