@@ -1,5 +1,5 @@
 # continuous-feedback-app
 
-Echipa:
+Echipa TLcode:
 - Fotin Laura-Elena
 - Găitănaru Teodora
