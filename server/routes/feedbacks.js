@@ -1,50 +1,46 @@
 const express = require("express");
-const Feedback = require("../classes/Feedback");
-const { feedbacks } = require("../db");
+const Activity = require("../models/activity");
+const Feedback = require("../models/feedback");
 const router = express.Router();
 
-//GET - tate feedback-urile
-router.get("/feedbacks", (req, res) => {
-  res.status(200).json(feedbacks);
+//GET - toate feedback-urile
+router.get("/feedbacks", async (req, res, next) => {
+  try {
+    const feedbacks = await Feedback.findAll();
+    if (feedbacks.length > 0) {
+      res.status(200).json(feedbacks);
+    } else {
+      res.status(404).send("Nu exista feedback-uri");
+    }
+  } catch (error) {
+    next(error);
+  }
 });
 
-//GET - Feedback-ul activitatii cu id corespunzator
-router.get("/feedbacks/:idActivitate", (req, res) => {
-  const feedback = feedbacks.find(
-    (f) => f.idActivitate === Number(req.params.idActivitate)
-  );
-  console.log(feedback);
-  if (feedback) {
-    res.status(200).json(feedback);
-  } else {
-    res
-      .status(404)
-      .send(
-        "Activitatea cu id-ul " + req.params.idActivitate + " nu a fost gasita!"
-      );
+// GET - Feedback-ul activitatii cu id corespunzator
+router.get("/feedbacks/:idActivitate",  async (req, res, next) => {
+  try {
+    const feedbacks = await Feedback.findAll({ where: { idActivitate: req.params.idActivitate } });
+    if (feedbacks.length > 0) {
+      res.status(200).json(feedbacks);
+    } else {
+      res.status(404).send("idActiviate: " + req.params.idActivitate + " nu a fost gasit!");
+    }
+  } catch (error) {
+    next(error);
   }
+
 });
 
 //POST - adauga feedback
-router.post("/feedbacks/addFeedback", (req, res) => {
-  if (!req.body.data) {
-    return res.send("Nu exista data!");
+router.post("/feedbacks/addFeedback", async (req, res) => {
+  try {
+    let result = await Feedback.create(req.body);
+    res.status(201).json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Feedback-ul nu a fost adaugat");
   }
-  if (!req.body.idActivitate) {
-    return res.send("Nu exista id-ul activitatii!");
-  }
-  if (!req.body.emoji) {
-    return res.send("Nu exista emoji!");
-  }
-
-  let feedback = new Feedback(
-    req.body.data,
-    req.body.idActivitate,
-    req.body.emoji
-  );
-  feedbacks.push(feedback);
-  console.log(feedback);
-  return res.json(feedbacks);
 });
 
 module.exports = router;
