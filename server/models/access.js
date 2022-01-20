@@ -1,35 +1,51 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/sequelize");
 
-const Student = sequelize.define(
-    "Student",
+
+const Access = sequelize.define(
+    "Access",
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        email: {
+        grupa: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
+        },
+        cod: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         nume: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        prenume: {
-            type: DataTypes.STRING,
-        },
-        grupa: {
-            type: DataTypes.NUMBER,
-            allowNull: false,
-        },
-        parola: {
+        materie: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-               
+        data: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        durata: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        oraIncepere: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        idActivitate: {
+            type: DataTypes.INTEGER,
+            required:true,
+            allowNull:false,
+            
+        },
+       
     }
 );
-module.exports = Student;
+
+module.exports = Access;

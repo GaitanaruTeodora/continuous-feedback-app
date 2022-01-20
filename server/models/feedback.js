@@ -11,6 +11,14 @@ const Feedback = sequelize.define(
         },
         idActivitate: {
             type: DataTypes.INTEGER,
+            required:true,
+            allowNull:false,
+            
+        },
+        timp: {
+            type: DataTypes.STRING,
+            required:true,
+            allowNull:false,
             
         },
         emoji: {

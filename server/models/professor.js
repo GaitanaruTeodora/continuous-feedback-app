@@ -10,6 +10,12 @@ const Professor = sequelize.define(
             primaryKey: true,
             autoIncrement: true,
         },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        },
+
         nume: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,6 +24,10 @@ const Professor = sequelize.define(
             type: DataTypes.STRING,
         },
         materie: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        parola: {
             type: DataTypes.STRING,
             allowNull: false,
         },

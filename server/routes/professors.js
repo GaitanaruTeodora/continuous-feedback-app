@@ -1,5 +1,5 @@
 const express = require("express");
-const Activity = require("../models/professor");
+const Professor = require("../models/professor");
 
 const router = express.Router();
 
@@ -27,16 +27,21 @@ router.get("/professors/:id", async (req, res) => {
   });
   
   //POST - adauga un profesor
-  router.post("/students/addProfessor", async (req, res) => {
+  router.post("/professors/addProfessor", async (req, res) => {
     if (!req.body.nume) {
       return res.send("Nu exista nume!");
     }
     if (!req.body.prenume) {
       return res.send("Nu exista prenume!");
     }
+    if (!req.body.email) {
+      return res.send("Nu exista email!");
+    }
+    
   
     try{
         const newProfessor = await Professor.create(req.body);
+        console.log(newProfessor)
         return res.status(200).json(newProfessor);
     }catch(err){
         return res.status(500).json(err);

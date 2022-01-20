@@ -13,7 +13,7 @@ router.get("/activities", async (req, res) => {
   }
 });
 
-// Endpoint 2. (GET) - returneaza o activitate dupa id-ul specificat.
+// Endpoint 2. (GET) - returneaza o activitate dupa id-ul specificat + afisare feedback
 router.get("/activities/:id", (req, res) => {
   var res1 = "";
   Activity.findByPk(req.params.id, { raw: true }).then((result) => {

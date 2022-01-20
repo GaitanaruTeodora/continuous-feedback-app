@@ -38,13 +38,15 @@ router.post("/students/addStudent", async (req, res) => {
   if (!req.body.grupa) {
     return res.send("Nu exista grupa!");
   }
+  if (!req.body.email) {
+    return res.send("Nu exista email!");
+  }
  try{
   const newStudent = await Student.create(req.body);
   return res.status(200).json(newStudent);
 }catch(err){
   return res.status(500).json(err);
 }
-
 });
 
 router.put('/students/modifStud/:id', (req, res) => {

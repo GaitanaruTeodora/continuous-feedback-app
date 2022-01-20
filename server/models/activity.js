@@ -18,7 +18,7 @@ const Activity = sequelize.define(
             type: DataTypes.STRING,
         },
         data: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         durata: {
@@ -26,12 +26,15 @@ const Activity = sequelize.define(
             allowNull: false,
         },
         oraIncepere: {
-            type: DataTypes.TIME,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         codAcces: {
             type: DataTypes.STRING,
             allowNull: false,
+        }, 
+        idProfessor:{
+            type:DataTypes.STRING,
         }, 
     }
 );

@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "./sqlite/contFeedback.db",
+  storage: "./server/sqlite/contFeedback.db",
 });
 
 sequelize.sync({alter: true,}).then(() => {
